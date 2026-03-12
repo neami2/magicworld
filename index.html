@@ -2,184 +2,1017 @@
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عالم العجائب | عروض سحرية وترفيهية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --magic-purple: #6b21a8;
-            --magic-pink: #db2777;
-            --magic-gold: #fbbf24;
-            --magic-dark: #1e1b4b;
-            --magic-darker: #0f0a1e;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, var(--magic-darker) 0%, var(--magic-dark) 100%);
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* Nav */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 1rem 5%;
-            background: rgba(30, 27, 75, 0.95); backdrop-filter: blur(10px);
-            z-index: 1000; display: flex; justify-content: space-between;
-            align-items: center; border-bottom: 2px solid var(--magic-gold);
-        }
-
-        .logo { font-size: 1.5rem; font-weight: 900; color: var(--magic-gold); }
-
-        /* Hero */
-        .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 20px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(45deg, var(--magic-gold), var(--magic-pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* Gallery & Grid */
-        .section-title { text-align: center; margin: 40px 0; }
-        .gallery-grid, .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px; padding: 20px;
-        }
-
-        .gallery-item img { width: 100%; border-radius: 15px; border: 2px solid var(--magic-gold); transition: 0.3s; }
-        .gallery-item img:hover { transform: scale(1.05); }
-
-        /* Show Cards */
-        .shows-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px; }
-        .show-card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 20px; text-align: center; border: 1px solid var(--magic-gold); }
-
-        /* Shop Styles */
-        .product-card { background: white; color: #333; border-radius: 15px; overflow: hidden; text-align: center; padding-bottom: 15px; }
-        .product-icon { font-size: 3rem; padding: 20px; background: #eee; display: block; }
-        .btn-magic { background: var(--magic-purple); color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; text-decoration: none; }
-
-        /* Responsive Fixes (التعديل الذي طلبته للجوال) */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* إخفاء الروابط لتوفير مساحة */
-            .gallery-grid, .products-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* حبتين بجانب بعض في الجوال */
-                gap: 10px;
-                padding: 10px;
-            }
-            .product-icon { font-size: 2rem; }
-            .show-card { margin: 10px; }
-        }
-
-        /* Cart Sidebar */
-        .cart-sidebar { position: fixed; top: 0; left: -100%; width: 300px; height: 100%; background: white; color: black; z-index: 2000; transition: 0.3s; padding: 20px; }
-        .cart-sidebar.open { left: 0; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; z-index: 1500; }
-        .overlay.active { display: block; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عالم العجائب | عروض سحرية وترفيهية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --magic-purple: #6b21a8;
+            --magic-pink: #db2777;
+            --magic-gold: #fbbf24;
+            --magic-dark: #1e1b4b;
+            --magic-darker: #0f0a1e;
+            --balloon-red: #ef4444;
+            --balloon-blue: #3b82f6;
+            --balloon-green: #10b981;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, var(--magic-darker) 0%, var(--magic-dark) 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        /* Navigation */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(30, 27, 75, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--magic-gold);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--magic-gold);
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+        }
+        
+        .logo i {
+            animation: spin 3s linear infinite;
+        }
+        
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--magic-gold);
+            transform: scale(1.1);
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--magic-gold);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--magic-pink);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        /* Hero Section */
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="%23fbbf24" opacity="0.3"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/></circle></svg>');
+            animation: sparkle 10s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes sparkle {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100px);
+            }
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--magic-gold), var(--magic-pink), var(--magic-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+        
+        .magic-wand {
+            font-size: 3rem;
+            animation: wand-wave 2s ease-in-out infinite;
+            display: inline-block;
+            margin: 0 1rem;
+        }
+        
+        @keyframes wand-wave {
+            0%,
+            100% {
+                transform: rotate(-15deg);
+            }
+            50% {
+                transform: rotate(15deg);
+            }
+        }
+        
+        .btn-magic {
+            background: linear-gradient(45deg, var(--magic-purple), var(--magic-pink));
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 30px rgba(219, 39, 119, 0.4);
+            transition: all 0.3s;
+            border: 2px solid var(--magic-gold);
+        }
+        
+        .btn-magic:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(219, 39, 119, 0.6);
+        }
+        /* Section Styles */
+        
+        section {
+            padding: 4rem 5%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--magic-gold);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .section-title p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+        /* Gallery Section */
+        
+        .gallery-section {
+            background: rgba(15, 10, 30, 0.5);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 3px solid var(--magic-gold);
+            aspect-ratio: 1;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            z-index: 10;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.2);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(107, 33, 168, 0.9), transparent);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        /* Entertainment Shows Section */
+        
+        .shows-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .show-card {
+            background: linear-gradient(135deg, rgba(107, 33, 168, 0.3), rgba(219, 39, 119, 0.3));
+            border-radius: 25px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid rgba(251, 191, 36, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .show-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .show-card:hover::before {
+            opacity: 1;
+        }
+        
+        .show-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--magic-gold);
+            box-shadow: 0 20px 40px rgba(107, 33, 168, 0.4);
+        }
+        
+        .show-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .show-card h3 {
+            font-size: 1.5rem;
+            color: var(--magic-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .show-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: right;
+        }
+        
+        .show-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .show-features li::before {
+            content: '✨';
+        }
+        
+        .price-tag {
+            font-size: 2rem;
+            color: var(--magic-gold);
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        /* Shop Section */
+        
+        .shop-section {
+            background: rgba(15, 10, 30, 0.8);
+        }
+        
+        .shop-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid var(--magic-gold);
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-weight: 600;
+        }
+        
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--magic-gold);
+            color: var(--magic-dark);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            color: var(--magic-dark);
+            transition: transform 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--magic-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--magic-purple), var(--magic-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--balloon-red);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--magic-purple);
+        }
+        
+        .product-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--magic-pink);
+        }
+        
+        .add-to-cart {
+            background: linear-gradient(45deg, var(--magic-purple), var(--magic-pink));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .add-to-cart:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(107, 33, 168, 0.4);
+        }
+        /* Cart Sidebar */
+        
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            color: var(--magic-dark);
+            z-index: 2000;
+            transition: left 0.3s;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-sidebar.open {
+            left: 0;
+        }
+        
+        .cart-header {
+            background: linear-gradient(45deg, var(--magic-purple), var(--magic-pink));
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            align-items: center;
+        }
+        
+        .cart-item-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--magic-purple), var(--magic-pink));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-details h4 {
+            margin-bottom: 0.3rem;
+        }
+        
+        .cart-item-details p {
+            color: var(--magic-pink);
+            font-weight: bold;
+        }
+        
+        .remove-item {
+            background: #fee2e2;
+            color: #ef4444;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .remove-item:hover {
+            background: #ef4444;
+            color: white;
+        }
+        
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 2px solid #e2e8f0;
+            background: #f8fafc;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(45deg, var(--magic-purple), var(--magic-pink));
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .checkout-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        /* Image Modal */
+        
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+            border: 5px solid var(--magic-gold);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 3rem;
+            cursor: pointer;
+            z-index: 3001;
+        }
+        /* Footer */
+        
+        footer {
+            background: var(--magic-darker);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 2px solid var(--magic-gold);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: right;
+        }
+        
+        .footer-section h3 {
+            color: var(--magic-gold);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            line-height: 2;
+        }
+        
+        .footer-section a:hover {
+            color: var(--magic-gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--magic-purple), var(--magic-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: rotate(360deg) scale(1.2);
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .cart-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+        }
+        /* Animations */
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo"><i class="fas fa-hat-wizard"></i> عالم العجائب</div>
-        <div class="cart-icon" onclick="toggleCart()" style="cursor:pointer">
-            <i class="fas fa-shopping-cart"></i> <span id="cartCount">0</span>
-        </div>
-    </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <i class="fas fa-hat-wizard"></i> عالم العجائب
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#gallery">معرض الصور</a></li>
+            <li><a href="#shows">العروض</a></li>
+            <li><a href="#shop">المتجر</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cartCount">0</span>
+        </div>
+    </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>عالم العجائب السحري</h1>
-            <p>عروض مذهلة وأدوات سحرية احترافية في شفاعمرو</p><br>
-            <a href="https://wa.me/972522842119" class="btn-magic">تواصل واتساب مباشر</a>
-        </div>
-    </section>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                <i class="fas fa-magic magic-wand"></i> عالم العجائب
+                <i class="fas fa-wand-magic-sparkles magic-wand"></i>
+            </h1>
+            <p>حيث يلتقي السحر بالترفيه! عروض سحرية مذهلة، بالونات ملونة، وأدوات سحرية احترافية</p>
+            <a href="#shows" class="btn-magic">
+                <i class="fas fa-star"></i> اكتشف العروض
+            </a>
+        </div>
+    </section>
 
-    <section id="gallery">
-        <div class="section-title"><h2>معرض الصور</h2></div>
-        <div class="gallery-grid" id="galleryGrid">
-            </div>
-    </section>
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="section-title">
+            <h2><i class="fas fa-images"></i> معرض الصور</h2>
+            <p>لحظات سحرية من عروضنا السابقة</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery items will be added by JavaScript -->
+        </div>
+    </section>
 
-    <section id="shop">
-        <div class="section-title"><h2>المتجر السحري</h2></div>
-        <div class="products-grid" id="productsGrid">
-            </div>
-    </section>
+    <!-- Entertainment Shows Section -->
+    <section id="shows">
+        <div class="section-title">
+            <h2><i class="fas fa-theater-masks"></i> عروضنا الترفيهية</h2>
+            <p>اختر العرض المناسب لمناسبتك الخاصة</p>
+        </div>
+        <div class="shows-grid">
+            <div class="show-card">
+                <div class="show-icon">🎩</div>
+                <h3>عرض الساحر الصغير</h3>
+                <p>عرض سحر تفاعلي للأطفال مع خدع بسيطة وممتعة</p>
+                <ul class="show-features">
+                    <li>مدة العرض: 30 دقيقة</li>
+                    <li>تفاعل مباشر مع الأطفال</li>
+                    <li>توزيع هدايا صغيرة</li>
+                    <li>مناسب للأعمار 4-10 سنوات</li>
+                </ul>
+                <div class="price-tag">300 شيكل</div>
+                <button class="btn-magic" onclick="bookShow('الساحر الصغير')">
+                    <i class="fas fa-calendar-check"></i>
+                    احجز الآن
+                </button>
+            </div>
 
-    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
-    <div class="cart-sidebar" id="cartSidebar">
-        <h3>سلة المشتريات</h3><hr><br>
-        <div id="cartItems">السلة فارغة</div><br>
-        <button class="btn-magic" style="width:100%" onclick="checkout()">إتمام الطلب عبر واتساب</button>
-    </div>
+            <div class="show-card pulse">
+                <div class="show-icon">🎈</div>
+                <h3>عرض البالونات السحري</h3>
+                <p>نحت البالونات على شكل شخصيات كرتونية وحيوانات</p>
+                <ul class="show-features">
+                    <li>مدة العرض: 45 دقيقة</li>
+                    <li>نحت 50 بالونة للأطفال</li>
+                    <li>شخصيات متنوعة (حيوانات، أبطال خارقين)</li>
+                    <li>ورشة تعليمية بسيطة</li>
+                </ul>
+                <div class="price-tag">400 شيكل</div>
+                <button class="btn-magic" onclick="bookShow('البالونات السحري')">
+                    <i class="fas fa-calendar-check"></i>
+                    احجز الآن
+                </button>
+            </div>
 
-    <script>
-        // بيانات الصور
-        const images = [
-            'https://cdn.discordapp.com/attachments/1432636030460235786/1481432914108612860/IMG_2374.png',
-            'https://cdn.discordapp.com/attachments/1432636030460235786/1481432915014582403/IMG_2368.png',
-            'https://cdn.discordapp.com/attachments/1432636030460235786/1481432914385178727/IMG_2373.png',
-            'https://cdn.discordapp.com/attachments/1432636030460235786/1481432915265982575/IMG_2366.png'
-        ];
+            <div class="show-card">
+                <div class="show-icon">✨</div>
+                <h3>العرض الاحترافي الكامل</h3>
+                <p>عرض سحر احترافي للكبار والصغار مع أدوات متقدمة</p>
+                <ul class="show-features">
+                    <li>مدة العرض: ساعة كاملة</li>
+                    <li>خدع سحرية متقدمة</li>
+                    <li>عناصر بصرية وصوتية</li>
+                    <li>تصوير احترافي للحفل</li>
+                </ul>
+                <div class="price-tag">800 شيكل</div>
+                <button class="btn-magic" onclick="bookShow('العرض الاحترافي')">
+                    <i class="fas fa-calendar-check"></i>
+                    احجز الآن
+                </button>
+            </div>
+        </div>
+    </section>
 
-        // بيانات المنتجات
-        const products = [
-            { id: 1, name: 'عصا سحرية', price: 50, icon: '🪄' },
-            { id: 2, name: 'مجموعة بالونات', price: 30, icon: '🎈' },
-            { id: 3, name: 'قبعة الساحر', price: 70, icon: '🎩' },
-            { id: 4, name: 'خدع ورقية', price: 40, icon: '🃏' }
-        ];
+    <!-- Shop Section -->
+    <section class="shop-section" id="shop">
+        <div class="section-title">
+            <h2><i class="fas fa-store"></i> متجر الأدوات السحرية</h2>
+            <p>كل ما تحتاجه لتصبح ساحراً محترفاً</p>
+        </div>
 
-        let cart = [];
+        <div class="shop-categories">
+            <button class="category-btn active" onclick="filterProducts('all')">الكل</button>
+            <button class="category-btn" onclick="filterProducts('magic')">أدوات سحرية</button>
+            <button class="category-btn" onclick="filterProducts('balloons')">بالونات</button>
+            <button class="category-btn" onclick="filterProducts('kits')">مجموعات</button>
+        </div>
 
-        // عرض الصور
-        const gGrid = document.getElementById('galleryGrid');
-        images.forEach(src => {
-            gGrid.innerHTML += `<div class="gallery-item"><img src="${src}"></div>`;
-        });
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be added by JavaScript -->
+        </div>
+    </section>
 
-        // عرض المنتجات
-        const pGrid = document.getElementById('productsGrid');
-        products.forEach(p => {
-            pGrid.innerHTML += `
-                <div class="product-card">
-                    <span class="product-icon">${p.icon}</span>
-                    <h3>${p.name}</h3>
-                    <p>${p.price} شيكل</p><br>
-                    <button class="btn-magic" onclick="addToCart(${p.id})">إضافة للسلة</button>
-                </div>`;
-        });
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2><i class="fas fa-envelope"></i> تواصل معنا</h2>
+            <p>للحجز والاستفسارات</p>
+        </div>
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem;">
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px;">
+                    <i class="fas fa-phone" style="font-size: 2rem; color: var(--magic-gold); margin-bottom: 1rem;"></i>
+                    <p>0522842119</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px;">
+                    <i class="fas fa-envelope" style="font-size: 2rem; color: var(--magic-gold); margin-bottom: 1rem;"></i>
+                    <p>Neami.khazim@gmail.com</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 20px;">
+                    <i class="fas fa-map-marker-alt" style="font-size: 2rem; color: var(--magic-gold); margin-bottom: 1rem;"></i>
+                    <p>شفاعمرو,اسرائيل</p>
+                </div>
+            </div>
+            <form style="display: flex; flex-direction: column; gap: 1rem;" onsubmit="event.preventDefault(); alert('تم إرسال رسالتك! سنتواصل معك قريباً');">
+                <input type="text" placeholder="اسمك" style="padding: 1rem; border-radius: 10px; border: 2px solid var(--magic-gold); background: rgba(255,255,255,0.1); color: white; font-family: inherit;" required>
+                <input type="tel" placeholder="رقم الجوال" style="padding: 1rem; border-radius: 10px; border: 2px solid var(--magic-gold); background: rgba(255,255,255,0.1); color: white; font-family: inherit;" required>
+                <textarea placeholder="رسالتك..." rows="4" style="padding: 1rem; border-radius: 10px; border: 2px solid var(--magic-gold); background: rgba(255,255,255,0.1); color: white; font-family: inherit;" required></textarea>
+                <button type="submit" class="btn-magic" style="border: none; cursor: pointer;">
+                    <i class="fas fa-paper-plane"></i>
+                    إرسال
+                </button>
+            </form>
+        </div>
+    </section>
 
-        function addToCart(id) {
-            const p = products.find(item => item.id === id);
-            cart.push(p);
-            updateCart();
-        }
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>عالم العجائب</h3>
+                <p>نقدم أفضل العروض السحرية والترفيهية لجميع المناسبات. نحول أحلامك إلى حقيقة سحرية!</p>
+            </div>
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <a href="#gallery">معرض الصور</a><br>
+                <a href="#shows">العروض</a><br>
+                <a href="#shop">المتجر</a><br>
+                <a href="#contact">تواصل معنا</a>
+            </div>
+            <div class="footer-section">
+                <h3>خدماتنا</h3>
+                <p>حفلات أعياد الميلاد</p>
+                <p>مناسبات خاصة</p>
+                <p>فعاليات شركات</p>
+                <p>ورش تعليمية</p>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-snapchat"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p style="margin-top: 2rem; color: #64748b;">&copy; 2024 عالم العجائب. جميع الحقوق محفوظة.</p>
+    </footer>
 
-        function updateCart() {
-            document.getElementById('cartCount').innerText = cart.length;
-            const cItems = document.getElementById('cartItems');
-            if(cart.length === 0) {
-                cItems.innerHTML = "السلة فارغة";
-            } else {
-                cItems.innerHTML = cart.map(i => `<div>${i.name} - ${i.price} شيكل</div>`).join('');
-            }
-        }
+    <!-- Cart Sidebar -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> سلة المشتريات</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #64748b; padding: 2rem;">السلة فارغة</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span id="cartTotal">0 شيكل</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-credit-card"></i>
+                إتمام الشراء
+            </button>
+        </div>
+    </div>
 
-        function toggleCart() {
-            document.getElementById('cartSidebar').classList.toggle('open');
-            document.getElementById('overlay').classList.toggle('active');
-        }
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img src="" alt="صورة مكبرة" class="modal-content" id="modalImage">
+    </div>
 
-        function checkout() {
-            if(cart.length === 0) return alert("السلة فارغة");
-            let msg = "مرحباً، أريد طلب:\n" + cart.map(i => "- " + i.name).join('\n');
-            window.open(`https://wa.me/972522842119?text=${encodeURIComponent(msg)}`);
-        }
-    </script>
-</body>
-</html>
+    <script>
+        // Data
+        const galleryImages = [{
+            src: 'https://cdn.discordapp.com/attachments/1432636030460235786/1481432914108612860/IMG_2374.png?ex=69b34b6a&is=69b1f9ea&hm=e917a621904e46cae1b2301fffd0c43c782f2b9c7bc516f70865d3fb12f8bcd9&',
+            title: 'عرض سحري للأطفال'
+        }, {
+            src: 'https://cdn.discordapp.com/attachments/1432636030460235786/1481432915014582403/IMG_2368.png?ex=69b34b6a&is=69b1f9ea&hm=32189d6994cee021c98e90092a5f6dfccc7dbecd8f44f1a3c8a02eff7e26c984&',
+            title: 'نحت البالونات'
+        }, {
+            src: 'https://media.discordapp.net/attachments/1432636030460235786/1481432914385178727/IMG_2373.png?ex=69b34b6a&is=69b1f9ea&hm=9525dcf60d7cbc2aa97f525d768c36407647ce0d01e0560a9075430ed5bcf68e&=&format=webp&quality=lossless&width=808&height=773',
+            title: 'حفلة عيد ميلاد'
+        }, {
+            src: 'https://cdn.discordapp.com/attachments/1432636030460235786/1481432915265982575/IMG_2366.png?ex=69b34b6a&is=69b1f9ea&hm=207e57ba9e7f9e08bdd94a945dc2ba963e888fc9a3ff68bb5c24614ca69c62ee&',
+            title: 'بالونات ملونة'
+        }, {
+            src: 'https://media.discordapp.net/attachments/1432636030460235786/1481432915899453502/IMG_2370.png?ex=69b34b6a&is=69b1f9ea&hm=d4c7d8e040430e7ad23025e2826302789190c898728d1ee1560c8dfa61196b62&=&format=webp&quality=lossl
